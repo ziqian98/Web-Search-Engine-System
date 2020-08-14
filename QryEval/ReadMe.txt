@@ -1,11 +1,16 @@
-This software illustrates the architecture for the portion of a searchengine that evaluates queries.  Documents are stored in Lucene 8.1.1 indexes. 
+This software illustrates the architecture for the portion of a searchengine that evaluates queries.  
+Documents are stored in Lucene 8.1.1 indexes. 
 Several main components are described below.
 
-QryEval is the main class. Given a parameter file which specifies the index path and query file in a key value pair (e.g., index=path_to_index), it opens the index, evaluates the queries, and prints the results.
+QryEval is the main class. Given a parameter file which specifies the index path and query file in a key value pair (e.g., index=path_to_index), 
+it opens the index, evaluates the queries, and prints the results.
 
-Qry is an abstract class for all query operators (e.g., AND, OR, SYN, NEAR/n, WINDOW/n, etc).  It has some data structures and methods that are common to all query operators.  The rest of the class are abstract definitions of query operator capabilities.
+Qry is an abstract class for all query operators (e.g., AND, OR, SYN, NEAR/n, WINDOW/n, etc).  
+It has some data structures and methods that are common to all query operators.  
+The rest of the class are abstract definitions of query operator capabilities.
 
-QryIop and QrySop are extensions of Qry that are specialized for query opeators that produce inverted lists (e.g., TERM, SYN, NEAR/n) and query operators that produce score lists (e.g., AND, SCORE).
+QryIop and QrySop are extensions of Qry that are specialized for query opeators that produce inverted 
+lists (e.g., TERM, SYN, NEAR/n) and query operators that produce score lists (e.g., AND, SCORE).
 
 QryIopTerm, QryIopSyn, and QrySopOr are query operator implementations for term (e.g., "apple"), synonym ("SYN"), and boolean OR query operators.
 
@@ -19,7 +24,11 @@ This implementation contains 4 types of query operators:
 
   * The Or operator, which combines score lists.
 
-Query operator behavior depends upon the type of retrieval model being used.  Some retrieval models have parameters.  RetrievalModel is an abstract class for all retrieval models.  Its subclasses provide places to store parameters and methods used to accomplish different types of query evaluation.  This implementation contains a RetrievalModelUnrankedBoolean that contains no parameters, but notice how the behavior of QrySopScore and QrySopOr can be altered depending upon the specific retrieval model being used.
+Query operator behavior depends upon the type of retrieval model being used.  
+Some retrieval models have parameters.  RetrievalModel is an abstract class for all retrieval models.  
+Its subclasses provide places to store parameters and methods used to accomplish different types of query evaluation.  
+This implementation contains a RetrievalModelUnrankedBoolean that contains no parameters, 
+but notice how the behavior of QrySopScore and QrySopOr can be altered depending upon the specific retrieval model being used.
 
 For example, to implement the Indri retrieval model, do the following.
 
@@ -38,4 +47,7 @@ The ScoreList class provides an implementation of a score list.
 
 The InvList class provides an implementation of an inverted list.
 
-Query expansion and text mining operations require random access to document term vectors. (Recall that a document term vector is a parsed representation of a document. See lecture notes for details.)  The TermVector class provides a simple, Indri-like API that gives access to the number of terms in a document, the vocabulary of terms that occur in the document, the terms that occur at each position in the document, and the frequency of each term.
+Query expansion and text mining operations require random access to document term vectors. 
+Recall that a document term vector is a parsed representation of a document. See lecture notes for details. 
+The TermVector class provides a simple, Indri-like API that gives access to the number of terms in a document, 
+the vocabulary of terms that occur in the document, the terms that occur at each position in the document, and the frequency of each term.
