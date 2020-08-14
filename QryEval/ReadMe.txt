@@ -1,25 +1,10 @@
-                          QryEval, version 3.4
-                            July 1, 2019
-
-
 This software illustrates the architecture for the portion of a search
 engine that evaluates queries.  Documents are stored in Lucene 8.1.1
-indexes.  The software is a template for class homework assignments,
-so it emphasizes simplicity over efficiency.  It has just a few main
-components, described below.
+indexes. Several main components are described below.
 
 QryEval is the main class. Given a parameter file which specifies the
-index path and query file in a key value pair (e.g.,
-index=path_to_index), it opens the index, evaluates the queries, and
+index path and query file in a key value pair (e.g., index=path_to_index), it opens the index, evaluates the queries, and
 prints the results.
-===========================
-1.You will need to modify this class so that it
-reads in more parameters, and writes results to another file.
-2. You will also need to extend the query parser. This should be fairly simple;
-3.the only slightly complicated part is handling operators that
-have weights.
-===========================
-
 
 Qry is an abstract class for all query operators (e.g., AND, OR, SYN,
 NEAR/n, WINDOW/n, etc).  It has just a few data structures and methods
