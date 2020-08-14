@@ -1,4 +1,5 @@
-This software illustrates the architecture for the portion of a searchengine that evaluates queries.  Documents are stored in Lucene 8.1.1 indexes. Several main components are described below.
+This software illustrates the architecture for the portion of a searchengine that evaluates queries.  Documents are stored in Lucene 8.1.1 indexes. 
+Several main components are described below.
 
 QryEval is the main class. Given a parameter file which specifies the index path and query file in a key value pair (e.g., index=path_to_index), it opens the index, evaluates the queries, and prints the results.
 
