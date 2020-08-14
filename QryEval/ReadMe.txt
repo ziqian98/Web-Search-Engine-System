@@ -1,4 +1,4 @@
-This software illustrates the architecture for the portion of a searchengine that evaluates queries.  
+This software illustrates the architecture for the portion of a search engine that evaluates queries.  
 Documents are stored in Lucene 8.1.1 indexes. 
 Several main components are described below.
 
@@ -9,7 +9,7 @@ Qry is an abstract class for all query operators (e.g., AND, OR, SYN, NEAR/n, WI
 It has some data structures and methods that are common to all query operators.  
 The rest of the class are abstract definitions of query operator capabilities.
 
-QryIop and QrySop are extensions of Qry that are specialized for query opeators that produce inverted 
+QryIop and QrySop are extensions of Qry that are specialized for query operators that produce inverted 
 lists (e.g., TERM, SYN, NEAR/n) and query operators that produce score lists (e.g., AND, SCORE).
 
 QryIopTerm, QryIopSyn, and QrySopOr are query operator implementations for term (e.g., "apple"), synonym ("SYN"), and boolean OR query operators.
